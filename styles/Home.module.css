@@ -2,7 +2,7 @@
 .main {
   display: flex;
   flex-direction: row;
-  color: #fff;
+  color: white;
   height: 100vh;
   width: 100%;
   overflow: hidden;
@@ -20,7 +20,6 @@
 
 .leftside {
   width: 50%;
-  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,30 +43,29 @@
 }
 
 .buttonCont {
+  display: flex;
+  flex-direction: row;
   margin-top: 30px;
 }
 
-.buttonCont button {
-  border: 1px solid #fff;
-  border-radius: 8px;;
-  padding: 15px;
+.buttonCont div {
+  display: flex;
+  justify-content: center;
+  border-left: 6px solid var(--highlight);
+  padding: 20px;
+  margin: 10px;
   width: 180px;
-  color: #fff;
+  color: var(--highlight);
+  font-size: 1.35rem;
+  transition: all 0.75s ease-in-out;
   cursor: pointer;
-  font-size: 1.25rem;
 }
 
-.buttonCont button:hover {
-  filter:brightness(0.8);
-}
-
-.hiremebtn {
-  background-color: #e52165;
-  margin-right: 20px;
-}
-
-.aboutbtn {
-  background-color: #5c3c92;
+.buttonCont div:hover {
+  filter:brightness(1.2);
+  border-color: var(--white);
+  color: white;
+  background-color: var(--bg-highlight);
 }
 
 .rightside {
@@ -78,9 +76,6 @@
 }
 
 .guy {
-  position: absolute;
-  top: -25%;
-  left: 0%;
   overflow: hidden;
   min-width: 960px;
   min-height: 1444px;
@@ -88,67 +83,52 @@
 
 .guybar {
   position: absolute;
-  top: -25%;
-  left: 0%;
+  top: 0;
+  left: 0;
   overflow: visible;
   min-width: 960px;
   min-height: 1444px;
 }
 
 
-.footer {
-  width: 100%;
-  height: 100px;
-  border-top: 1px solid #eaeaea;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-@keyframes appear {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes disappear {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-  }
-}
-
-@keyframes slideFromTop {
-  from {
-    top: -50%;
-  }
-
-  to {
-    top: 50%;
-  }
-}
-
-@keyframes offscreen {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-200%);
-  }
-}
 
 @media (max-width: 1000px) {
-  .guy {
-    left: -100%;
-    opacity: 0.2;
+  .rightside {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+  .leftside {
+    width: 100%;
+    z-index: 1;
+  }
+  .guybar {
+    filter: blur(2px);
+  }
+  .intro {
+    font-size: 3rem;
+    -webkit-text-stroke: 1px var(--mobile-text-highlight);
+    background-color: rgba(17, 14, 14, 0.75);
+  }
+  .intro2 {
+    font-size: 3rem;
+    -webkit-text-stroke: 1px var(--mobile-text-highlight);
+    background-color: rgba(17, 14, 14, 0.75);
+  }
+  
+  .intronext {
+    font-size: 1.75rem;
+    -webkit-text-stroke: 1px var(--mobile-text-highlight);
+    background-color: rgba(17, 14, 14, 0.75);
+  }
+  
+  .buttonCont div {
+    border-left: 3px solid var(--highlight);
+    font-size: 1.15rem;
+    width: 150px;
+    padding: 10px;
+    background-color: rgba(17, 14, 14, 0.75);
   }
 }
 

@@ -4,16 +4,19 @@ import Layout from "../components/layout";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faCopy } from '@fortawesome/free-solid-svg-icons';
 import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
-import ReactTooltip from 'react-tooltip';
 import React, { useState } from "react";
+import Link from 'next/link';
 
 export default function Contact(props) {
-    const email1 = "black.hair";
+    const email1 = "viktori.patalainen";
     const email2 = "@gmail.com";
-    const [one, setOne] = useState(true);
 
-    const getDelay = () => {
-        return Math.ceil(Math.random()*4);
+    const [tap, setTap] = useState({1: false, 2: false, 3: false});
+
+    const handleTap = (event, id) => {
+        if (event.pointerType == 'touch') {
+            setTap({...tap, [id]: !tap[id]});
+        }
     }
 
     const grow = {
@@ -27,7 +30,7 @@ export default function Contact(props) {
             borderRadius: "50%",
             rotate: 360,
             padding: "3rem",
-            backgroundColor: "#ecc19c",
+            backgroundColor: "rgb(226, 225, 243)",
             transitionEnd: {
                 //nothing for now
             }
@@ -37,7 +40,7 @@ export default function Contact(props) {
                 duration: 0.25,
                 repeatType: "mirror",
                 repeat: Infinity,
-                repeatDelay: getDelay()
+                repeatDelay: 4
             },
             rotate: [0, -8, 12, 0, -10, 6, 0],
         }
@@ -49,7 +52,14 @@ export default function Contact(props) {
                 duration: 1
             },
             y: "50px",
-            color: "#26495c"
+            color: "rgb(52, 52, 212)"
+        },
+        shake: {
+            transition: {
+                duration: 0.5
+            },
+            y: 0,
+            color: "#fff"
         }
     }
 
@@ -66,7 +76,7 @@ export default function Contact(props) {
                 duration: 0.5,
             },
             scale: 1.2,
-        }
+        },
     }
 
 
@@ -74,55 +84,88 @@ export default function Contact(props) {
     //<ReactTooltip effect="solid" type="light" border textColor="black" backgroundColor="white" event="click" afterShow={(e)=>hideTooltip(e)} />
     return (
         <Layout key="contact">
-            <main className={styles.main}>
-                <motion.div
-                    whileHover="hover"
-                    animate="shake"
-                    variants={grow}
-                    className={styles.contactCont}
-                >
-                    <motion.a
-                        href={`mailto:${email1+email2}`}
-                        className={styles.contactTitle}
-                        variants={fadeIn}
-                    >
-                        <span className={styles.email1}>{email1}</span><span className={styles.email2}>{email2}</span>
-                    </motion.a>
+            <AnimatePresence>
+                <main className={styles.main}>
+                    <div className={styles.iconCont}>
+                        <motion.div
+                            whileHover="hover"
+                            onTap={(e)=>handleTap(e, 1)}
+                            animate={tap[1] ? "hover" : "shake"}
+                            variants={grow}
+                            className={styles.contactCont}
+                        >
+                            <motion.div
+                                onTap={()=>window.open(`mailto:${email1 + email2}`)}
+                                className={styles.contactTitle}
+                                variants={fadeIn}
+                            >
+                                <span className={styles.email1}>{email1}</span><span className={styles.email2}>{email2}</span>
+                            </motion.div>
 
-                    <motion.div
-                        variants={move}
-                        className={styles.icon}
-                    >
-                        <FontAwesomeIcon icon={faEnvelope} size="3x" />
-                    </motion.div>
+                            <motion.div
+                                variants={move}
+                                className={styles.icon}
+                            >
+                                <FontAwesomeIcon icon={faEnvelope} size="3x" />
+                            </motion.div>
 
-                </motion.div>
+                        </motion.div>
+                        <motion.div
+                            whileHover="hover"
+                            onTap={(e)=>handleTap(e, 2)}
+                            animate={tap[2] ? "hover" : "shake"}
+                            variants={grow}
+                            className={styles.contactCont}
+                        >
+                            <motion.div
+                                onTap={()=>window.open("https://www.linkedin.com/in/viktori-patalainen/", "_blank")}
+                                className={styles.contactTitle}
+                                variants={fadeIn}
+                            >
+                                <div className={styles.brand}>Linkedin</div>
+                            </motion.div>
 
-                <motion.div
-                    whileHover="hover"
-                    animate="shake"
-                    variants={grow}
-                    className={styles.contactCont}
-                >
-                    <motion.a
-                        href="https://linkedin.com"
-                        target="_blank"
-                        className={styles.contactTitle}
-                        variants={fadeIn}
-                        
-                    >
-                        <div className={styles.brand}>Linkedin</div>
-                    </motion.a>
+                            <motion.div
+                                variants={move}
+                                className={styles.icon}
+                            >
+                                <FontAwesomeIcon icon={faLinkedin} size="3x" />
+                            </motion.div>
 
-                    <motion.div
-                        variants={move}
-                        className={styles.icon}
-                    >
-                        <FontAwesomeIcon icon={faLinkedin} size="3x" />
-                    </motion.div>
+                        </motion.div>
+                        <motion.div
+                            whileHover="hover"
+                            onTap={(e)=>handleTap(e, 3)}
+                            animate={tap[3] ? "hover" : "shake"}
+                            variants={grow}
+                            className={styles.contactCont}
+                        >
+                            <motion.div
+                                onTap={()=>window.open("https://github.com/Viktorip/Viktorip", "_blank")}
+                                className={styles.contactTitle}
+                                variants={fadeIn}
+                            >
+                                <div className={styles.brand}>Github</div>
+                            </motion.div>
 
-                </motion.div>
-            </main>
+                            <motion.div
+                                variants={move}
+                                className={styles.icon}
+                            >
+                                <FontAwesomeIcon icon={faGithub} size="3x" />
+                            </motion.div>
+
+                        </motion.div>
+                    </div>
+                    <div className={styles.moreInfo}>
+                        <Link href="/about" passHref>
+                            <div className={styles.tellmore}>
+                                Tell me more about yourself first
+                            </div>
+                        </Link>
+                    </div>
+                </main>
+            </AnimatePresence>
         </Layout>
     );
 }

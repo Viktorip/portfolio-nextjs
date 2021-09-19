@@ -66,7 +66,7 @@ export default function Contact(props) {
     const fadeIn = {
         hover: {
             transition: {
-                duration: 2.5
+                duration: 1.5
             },
             opacity: 1,
             display: "inline-block"

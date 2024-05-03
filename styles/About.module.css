@@ -7,6 +7,8 @@
   height: 100vh;
   overflow-x: hidden;
   color: white;
+  position: relative;
+
 }
 
 .meCont {

@@ -1,5 +1,5 @@
 import styles from "../styles/Contact.module.css";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import Layout from "../components/layout";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faCopy } from '@fortawesome/free-solid-svg-icons';
@@ -83,8 +83,8 @@ export default function Contact(props) {
     //<div data-tip="Email copied!" ref={ref => emailRef = ref} className={styles.copy} onClick={() => navigator.clipboard.writeText(email)}><FontAwesomeIcon icon={faCopy} color="white" /></div>
     //<ReactTooltip effect="solid" type="light" border textColor="black" backgroundColor="white" event="click" afterShow={(e)=>hideTooltip(e)} />
     return (
-        <Layout key="contact">
-            <AnimatePresence>
+        <Layout id="contact">
+            
                 <main className={styles.main}>
                     <div className={styles.iconCont}>
                         <motion.div
@@ -141,7 +141,7 @@ export default function Contact(props) {
                             className={styles.contactCont}
                         >
                             <motion.div
-                                onTap={()=>window.open("https://github.com/Viktorip/Viktorip", "_blank")}
+                                onTap={()=>window.open("https://github.com/Viktorip", "_blank")}
                                 className={styles.contactTitle}
                                 variants={fadeIn}
                             >
@@ -165,7 +165,7 @@ export default function Contact(props) {
                         </Link>
                     </div>
                 </main>
-            </AnimatePresence>
+            
         </Layout>
     );
 }

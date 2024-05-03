@@ -1,7 +1,7 @@
 import styles from "../styles/About.module.css";
 import Layout from "../components/layout";
 import Image from 'next/image';
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from 'next/link';
 import { useState } from "react";
 
@@ -31,9 +31,9 @@ export default function About(props) {
     }
 
     return (
-        <Layout key="about">
+        <Layout id="about">
             <div className={styles.main}>
-                <AnimatePresence>
+
                     <div className={styles.meCont}>
                         <motion.div
                             initial="start"
@@ -41,7 +41,7 @@ export default function About(props) {
                             variants={original}
                             key="1"
                             className={styles.start}>
-                            <Image src="/images/face_black_bg_info.jpg" width={'400px'} height={'516px'} priority alt="Real me" />
+                            <Image src="/images/face_black_bg_info.jpg" width={'400'} height={'516'} priority alt="Real me" />
                         </motion.div>
                         <motion.div
                             initial="hide"
@@ -52,10 +52,10 @@ export default function About(props) {
                             variants={original}
                             key="2"
                             className={styles.end}>
-                            <Image src="/images/face_black_bg_text.jpg" width={'400px'} height={'516px'} priority alt="Still real me" />
+                            <Image src="/images/face_black_bg_text.jpg" width={'400'} height={'516'} priority alt="Still real me" />
                         </motion.div>
                     </div>
-                </AnimatePresence>
+
                 <div className={styles.infoCont}>
                     <div className={styles.title}>Viktori Patalainen</div>
                     <div className={styles.moreinfo}>

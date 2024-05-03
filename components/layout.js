@@ -1,16 +1,14 @@
-import Head from "next/head";
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import styles from './layout.module.css';
 
 
-export default function Layout({children}) {
+export default function Layout({children, id}) {
 
     const variants = {
         hidden: { left: "200%" },
-        enter: { left: 0 },
+        enter: { left: "0%" },
         exit: { left: "-200%" },
     }
-
 
     return (
 
@@ -19,11 +17,12 @@ export default function Layout({children}) {
             animate="enter"
             exit="exit"
             variants={variants}
-            transition={{ duration: 0.5, type: 'tween', ease: "easeOut" }}
+            transition={{ duration: 1, type: 'tween', ease: "easeOut" }}
             className={styles.main}
+            key={id}
         >
             {children}
         </motion.div>
-
+        
     );
 }

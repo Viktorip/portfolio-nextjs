@@ -11,10 +11,10 @@ import { AnimatePresence } from "framer-motion";
 function MyApp({ Component, pageProps, router }) {
   return (
     <AnimatePresence
-      exitBeforeEnter
       initial={false}
       onExitComplete={() => console.log("exit complete")}
-      key="topanimate"
+      mode="wait"
+      //key="topanimate"
     >
       <Component {...pageProps} key={`${router.route}uniquekey`} />
     </AnimatePresence>

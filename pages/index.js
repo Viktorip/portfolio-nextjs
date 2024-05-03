@@ -1,9 +1,7 @@
-import Head from 'next/head';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import styles from '../styles/Home.module.css';
 import Link from 'next/link';
-import Router from 'next/router';
 import { motion, AnimatePresence } from "framer-motion";
 import Layout from '../components/layout';
 
@@ -14,7 +12,7 @@ export default function Home() {
   }, []);
 
   return (
-    <Layout key="home">
+    <Layout id="home">
       <main className={styles.main}>
         <AnimatePresence>
           <div className={styles.leftside} key="left">
@@ -64,7 +62,7 @@ export default function Home() {
               transition={{ duration: 1.5, delay: 5.5 }}
               key="5"
               className={styles.notme}>
-              <Image src="/images/notme.png" width={'153px'} height={'45px'} priority alt="Not me" />
+              <Image src="/images/notme.png" width={'153'} height={'45'} priority alt="Not me" />
             </motion.div>
             <motion.div
               initial={{ opacity: 0 }}
@@ -72,7 +70,7 @@ export default function Home() {
               transition={{ duration: 5.5 }}
               key="6"
               className={styles.guy}>
-              <Image src="/images/random_guy_716.jpg" width={'716px'} height={'1156px'} priority alt="Not me" />
+              <Image src="/images/random_guy_716.jpg" width={'716'} height={'1156'} priority alt="Not me" />
             </motion.div>
             <motion.div
               initial={{ opacity: 0 }}
@@ -80,7 +78,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 7 }}
               key="7"
               className={styles.guybar}>
-              <Image src="/images/random_guy_bar_716.jpg" width={'716px'} height={'1156px'} priority alt="Not me censored" />
+              <Image src="/images/random_guy_bar_716.jpg" width={'716'} height={'1156'} priority alt="Not me censored" />
             </motion.div>
           </div>
         </AnimatePresence>
@@ -88,15 +86,3 @@ export default function Home() {
     </Layout>
   )
 }
-
-/*
-
-<motion.main
-          animate={pagemove ? "offscreen" : ""}
-          variants={variants}
-          transition={{ duration: 0.5 }}
-          className={`${styles.main} ${styles[pagemove]}`}
-          onAnimationComplete={()=>Router.push('/contact')}
-        >
-
-*/

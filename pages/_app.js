@@ -14,7 +14,6 @@ function MyApp({ Component, pageProps, router }) {
       initial={false}
       onExitComplete={() => console.log("exit complete")}
       mode="wait"
-      //key="topanimate"
     >
       <Component {...pageProps} key={`${router.route}uniquekey`} />
     </AnimatePresence>
